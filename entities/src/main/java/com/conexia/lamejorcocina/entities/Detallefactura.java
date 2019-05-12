@@ -33,6 +33,9 @@ public class Detallefactura implements Serializable {
     
     @Column(name = "plato")
     private String plato;
+
+    @Column(name = "idFactura")
+    private String idFactura;
     
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "importe")
@@ -73,13 +76,13 @@ public class Detallefactura implements Serializable {
         this.importe = importe;
     }
 
-//    public Factura getFactura() {
-//        return factura;
-//    }
-//
-//    public void setFactura(Factura factura) {
-//        this.factura = factura;
-//    }
+    public String getIdFactura() {
+        return idFactura;
+    }
+
+    public void setIdFactura(String idFactura) {
+        this.idFactura = idFactura;
+    }
 
     public Cocinero getIdCocinero() {
         return idCocinero;

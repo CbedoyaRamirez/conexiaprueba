@@ -48,10 +48,6 @@ public class Factura implements Serializable {
     @JoinColumn(name = "idCamarero", referencedColumnName = "idCamarero")
     @ManyToOne(fetch = FetchType.LAZY)
     private Camarero idCamarero;
-    
-    @JoinColumn(name = "idDetalleFactura", referencedColumnName = "detallefactura")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Detallefactura detallefactura;
 
     public Factura() {
     }
@@ -99,15 +95,6 @@ public class Factura implements Serializable {
     public void setIdCamarero(Camarero idCamarero) {
         this.idCamarero = idCamarero;
     }
-
-    public Detallefactura getDetallefactura() {
-        return detallefactura;
-    }
-
-    public void setDetallefactura(Detallefactura detallefactura) {
-        this.detallefactura = detallefactura;
-    }
-
 
     @Override
     public int hashCode() {

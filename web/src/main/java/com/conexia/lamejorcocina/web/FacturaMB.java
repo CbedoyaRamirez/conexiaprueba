@@ -8,6 +8,7 @@ import com.conexia.lamejorcocina.entities.Factura;
 import com.conexia.lamejorcocina.entities.Mesa;
 import com.conexia.lamejorcocina.persistence.CamareroFacadeLocal;
 import com.conexia.lamejorcocina.persistence.CocineroFacadeLocal;
+import com.conexia.lamejorcocina.persistence.DetallefacturaFacadeLocal;
 import com.conexia.lamejorcocina.persistence.FacturaFacadeLocal;
 import com.conexia.lamejorcocina.persistence.MesaFacadeLocal;
 import java.io.IOException;
@@ -31,8 +32,11 @@ import org.primefaces.context.RequestContext;
 @Named(value = "facturaMB")
 @RequestScoped
 public class FacturaMB {
-    
-//Seccion EJB
+
+    //Seccion EJB
+
+    @EJB
+    private DetallefacturaFacadeLocal detallefacturaFacade;
 
     @EJB
     private CocineroFacadeLocal cocineroFacade;
@@ -62,23 +66,23 @@ public class FacturaMB {
     private String detallePlato;
 
     private List<Camarero> listaCamareros;
-    
+
     private List<Cocinero> listaCocineros;
 
     private List<Mesa> listaMesas;
 
     private Camarero camarero;
-    
+
     private Cocinero cocinero;
 
     private Mesa mesa;
 
     private String msgNumeroFacturaGuardada;
-    
+
     private String descripcionPlato;
-    
+
     private Double costoPlato;
-    
+
     @PostConstruct
     public void init() {
         inicializarVariables();
@@ -95,13 +99,15 @@ public class FacturaMB {
 
     public void guardarFactura() {
         if (validarEntrada()) {
-            try{
+            try {
                 Factura factura = crearObj();
                 Cliente cliente = new Cliente();
                 Detallefactura detalleFactura = new Detallefactura();
                 detalleFactura.setIdCocinero(cocinero);
                 detalleFactura.setIdDetalleFactura(numeroFactura);
                 detalleFactura.setImporte(costoPlato);
+                detalleFactura.setPlato(detallePlato);
+                detalleFactura.setIdFactura(numeroFactura.toString());
                 cliente.setApellido1(apellido1);
                 cliente.setApellido2(apellido2);
                 cliente.setIdCliente(numeroIdCliente);
@@ -112,11 +118,12 @@ public class FacturaMB {
                 factura.setFechaFactura(new Date());
                 factura.setIdMesa(mesa);
                 facturaFacade.create(factura);
+                detallefacturaFacade.create(detalleFactura);
                 msgNumeroFacturaGuardada = numeroFactura.toString();
                 reiniciarVariables();
                 RequestContext context = RequestContext.getCurrentInstance();
                 context.execute("PF('dialogFacturaGuardada').show()");
-            }catch(Exception e){
+            } catch (Exception e) {
                 RequestContext context = RequestContext.getCurrentInstance();
                 context.execute("PF('dialogErrorFacturaGuardada').show()");
             }
@@ -167,6 +174,8 @@ public class FacturaMB {
         observacion = "";
         detallePlato = "";
         numeroIdCliente = null;
+        descripcionPlato = "";
+        costoPlato = null;
     }
 
     //SECCION GETTER - SETTERS
@@ -298,6 +307,4 @@ public class FacturaMB {
         this.cocinero = cocinero;
     }
 
-    
-    
 }
