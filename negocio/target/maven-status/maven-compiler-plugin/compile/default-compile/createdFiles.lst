@@ -1,0 +1,5 @@
+com\conexia\lamejorcocina\negocio\facturaNegocioLocal.class
+com\conexia\lamejorcocina\negocio\DetalleFacuraNegocio.class
+com\conexia\lamejorcocina\negocio\facturaNegocio.class
+com\conexia\lamejorcocina\vo\reporteTotalFacturadoVO.class
+com\conexia\lamejorcocina\negocio\DetalleFacuraNegocioLocal.class

@@ -1,0 +1,13 @@
+com\conexia\lamejorcocina\persistence\AbstractFacade.class
+com\conexia\lamejorcocina\persistence\DetallefacturaFacade.class
+com\conexia\lamejorcocina\persistence\MesaFacade.class
+com\conexia\lamejorcocina\persistence\MesaFacadeLocal.class
+com\conexia\lamejorcocina\persistence\CocineroFacadeLocal.class
+com\conexia\lamejorcocina\persistence\CamareroFacadeLocal.class
+com\conexia\lamejorcocina\persistence\ClienteFacade.class
+com\conexia\lamejorcocina\persistence\ClienteFacadeLocal.class
+com\conexia\lamejorcocina\persistence\CamareroFacade.class
+com\conexia\lamejorcocina\persistence\FacturaFacade.class
+com\conexia\lamejorcocina\persistence\CocineroFacade.class
+com\conexia\lamejorcocina\persistence\DetallefacturaFacadeLocal.class
+com\conexia\lamejorcocina\persistence\FacturaFacadeLocal.class

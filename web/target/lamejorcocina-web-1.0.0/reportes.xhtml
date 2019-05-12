@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pf="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Reportes LA-MEJOR-COCINA</title>
+    </h:head>
+    <h:body>
+        <h:form id="Reportes">
+            <center>
+                <pf:panel header="REPORTES LA MEJOR COCINA" >
+                    <pf:commandButton id="ReporteTotalFacturado" value="Reporte total facturado"  action="#{reporteMB.reporteTotalFacturado()}" update="panelReporte" />
+                    <pf:commandButton id="ReportesGastoSuperiores" value="Reporte gastos superiores"  action="#{reporteMB.reporteGastoSuperior()}" update="panelReporte" />
+
+                    <pf:panel id="panelReporte" >
+                        <pf:panelGrid>
+                            <pf:dataTable var="reporte" value="#{reporteMB.listReporte}"
+                                         rows="5"
+                                         paginator="true"
+                                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                         rowsPerPageTemplate="5,10,15">
+
+                                <pf:column headerText="Nombre">
+                                    <h:outputText value="#{reporte.nombre}" />
+                                </pf:column>
+                                <pf:column headerText="Apellido">
+                                    <h:outputText value="#{reporte.apellido}" />
+                                </pf:column>
+                                <pf:column headerText="Mes">
+                                    <h:outputText value="#{reporte.mes}" />
+                                </pf:column>
+                                <pf:column headerText="Suma">
+                                    <h:outputText value="#{reporte.suma}" />
+                                </pf:column>
+                            </pf:dataTable>
+                        </pf:panelGrid>
+                    </pf:panel>
+
+                </pf:panel>
+            </center>
+        </h:form>   
+    </h:body>
+</html>
+

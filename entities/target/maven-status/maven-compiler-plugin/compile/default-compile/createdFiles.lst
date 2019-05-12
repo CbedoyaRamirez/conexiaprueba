@@ -1,0 +1,6 @@
+com\conexia\lamejorcocina\entities\Factura.class
+com\conexia\lamejorcocina\entities\Cliente.class
+com\conexia\lamejorcocina\entities\Cocinero.class
+com\conexia\lamejorcocina\entities\Mesa.class
+com\conexia\lamejorcocina\entities\Camarero.class
+com\conexia\lamejorcocina\entities\Detallefactura.class

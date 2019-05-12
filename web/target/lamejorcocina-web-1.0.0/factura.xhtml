@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pf="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Guardar Factura</title>
+    </h:head>
+    <h:body>
+        <h:form id="IngresoFactura">
+            <pf:messages id="copiasAdminMensaje" globalOnly="true" />
+            <center>
+                <pf:panel header="Datos Factura" >
+                    <pf:panelGrid columns="2" >
+                        <pf:outputLabel value="Factura No." />
+                        <pf:inputText  value="#{facturaMB.numeroFactura}" />
+                        <pf:outputLabel value="Número de mesa" />
+                        <pf:selectOneMenu id="listaMesas" value="#{facturaMB.mesa}" converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Seleccione una mesa" noSelectionOption="true" />  
+                            <f:selectItems value="#{facturaMB.listaMesas}" var="mesa" itemLabel="#{mesa.idMesa} #{mesa.ubicacion}" itemValue="#{mesa}" />
+                        </pf:selectOneMenu>
+                        <pf:outputLabel value="Coste Plato" />
+                        <pf:inputText  value="#{facturaMB.costoPlato}" maxlength="30" />
+                        <pf:outputLabel value="Plato" />
+                        <pf:inputText  value="#{facturaMB.descripcionPlato}" maxlength="50" />
+                    </pf:panelGrid>
+                </pf:panel>
+            </center>
+
+            <center>
+                <pf:panel header="Datos Cliente" >
+                    <h:panelGrid columns="2">
+                        <pf:outputLabel value="ID." />
+                        <pf:inputText value="#{facturaMB.numeroIdCliente}" maxlength="50" />
+
+                        <pf:outputLabel value="Nombres." />
+                        <pf:inputText value="#{facturaMB.nombre}" maxlength="50" />
+
+                        <pf:outputLabel value="Apellido1" />
+                        <pf:inputText value="#{facturaMB.apellido1}" maxlength="50" />
+
+                        <pf:outputLabel value="Apellido2" />
+                        <pf:inputText value="#{facturaMB.apellido2}"  maxlength="50" />
+
+                        <pf:outputLabel value="Observaciones" />
+                        <pf:inputTextarea value="#{facturaMB.observacion}" maxlength="300" /> 
+                    </h:panelGrid>
+                </pf:panel>
+            </center>
+
+            <center>
+                <pf:panel header="Datos Camarero" >
+                    <h:panelGrid columns="2">
+                        <pf:outputLabel value="Nombre Camarero" />
+                        <pf:selectOneMenu id="listaCamareros" value="#{facturaMB.camarero}" converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Seleccione un camarero" noSelectionOption="true" />  
+                            <f:selectItems value="#{facturaMB.listaCamareros}" var="camarero" itemLabel="#{camarero.nombre} #{camarero.apellido1} #{camarero.apellido2}" itemValue="#{camarero}" />
+                        </pf:selectOneMenu>
+                    </h:panelGrid>
+                </pf:panel>
+            </center>
+            
+            <center>
+                <pf:panel header="Datos Cocinero" >
+                    <h:panelGrid columns="2">
+                        <pf:outputLabel value="Nombre Cocinero" />
+                        <pf:selectOneMenu id="listaCocinero" value="#{facturaMB.cocinero}" converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Seleccione un cocinero" noSelectionOption="true" />  
+                            <f:selectItems value="#{facturaMB.listaCocineros}" var="cocinero" itemLabel="#{cocinero.nombre} #{cocinero.apellido1} #{cocinero.apellido2}" itemValue="#{cocinero}" />
+                        </pf:selectOneMenu>
+                    </h:panelGrid>
+                </pf:panel>
+            </center>
+            <br/>
+            <center>
+                <pf:commandButton id="guardarFactura" value="Guardar Factura"  actionListener="#{facturaMB.guardarFactura()}" update="@form"  ></pf:commandButton>
+            </center>
+            <br/>
+            <center>
+                <pf:panel header="Reportes" >
+                    <h:link outcome="reportes" >
+                        <pf:commandButton id="reporte" value="Reportes"  ></pf:commandButton>
+                    </h:link>
+                </pf:panel>
+            </center>
+        </h:form>   
+
+        <pf:dialog header="FACTURA GUARDADA" 
+                  id="dialogFacturaGuardada"
+                  widgetVar="dialogFacturaGuardada" 
+                  minHeight="40"
+                  draggable="false"
+                  modal="true"
+                  resizable="false"
+                  maximizable="false">
+
+            <pf:outputLabel value="Factura correctamente guardada" />
+            <pf:commandButton value="Salir" onclick="PF('dialogFacturaGuardada').hide();" 
+                             styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </pf:dialog>    
+
+        <pf:dialog header="ERROR AL GUARDAR FACTURA" 
+                  id="dialogErrorFacturaGuardada"
+                  widgetVar="dialogErrorFacturaGuardada" 
+                  minHeight="40"
+                  draggable="false"
+                  modal="true"
+                  resizable="false"
+                  maximizable="false">
+
+            <pf:outputLabel value="Error al momento de guardar la Factura" />
+            <pf:commandButton value="Salir" onclick="PF('dialogErrorFacturaGuardada').hide();" 
+                             styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </pf:dialog>    
+
+    </h:body>
+</html>
+
