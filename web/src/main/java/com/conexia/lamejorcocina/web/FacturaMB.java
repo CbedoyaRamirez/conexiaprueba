@@ -22,6 +22,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 
@@ -34,7 +35,6 @@ import org.primefaces.context.RequestContext;
 public class FacturaMB {
 
     //Seccion EJB
-
     @EJB
     private DetallefacturaFacadeLocal detallefacturaFacade;
 
@@ -127,6 +127,9 @@ public class FacturaMB {
                 RequestContext context = RequestContext.getCurrentInstance();
                 context.execute("PF('dialogErrorFacturaGuardada').show()");
             }
+        } else {
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.execute("PF('dialogErrorDatosObligatorios').show()");
         }
     }
 
@@ -153,14 +156,27 @@ public class FacturaMB {
         if (observacion.trim().equals("")) {
             return false;
         }
+        if (Objects.isNull(costoPlato)) {
+            return false;
+        }
+        if (observacion.trim().equals("")) {
+            return false;
+        }
+        if (descripcionPlato.trim().equals("")) {
+            return false;
+        }
+        if (Objects.isNull(numeroIdCliente)) {
+            return false;
+        }
 
         return true;
     }
 
     public void irPaginaReporte() {
         try {
-            FacesContext contex = FacesContext.getCurrentInstance();
-            contex.getExternalContext().redirect("/faces/reportes.xhtml");
+            FacesContext fContext = FacesContext.getCurrentInstance();
+            ExternalContext extContext = fContext.getExternalContext();
+            extContext.redirect(extContext.getRequestContextPath() + "/faces/reportes.xhtml");
         } catch (IOException ex) {
             Logger.getLogger(FacturaMB.class.getName()).log(Level.SEVERE, null, ex);
         }

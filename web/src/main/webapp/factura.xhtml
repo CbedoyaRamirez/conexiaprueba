@@ -61,7 +61,7 @@
                     </h:panelGrid>
                 </pf:panel>
             </center>
-            
+
             <center>
                 <pf:panel header="Datos Cocinero" >
                     <h:panelGrid columns="2">
@@ -80,39 +80,51 @@
             <br/>
             <center>
                 <pf:panel header="Reportes" >
-                    <h:link outcome="reportes" >
-                        <pf:commandButton id="reporte" value="Reportes"  ></pf:commandButton>
-                    </h:link>
+                    <pf:commandButton id="reporte" value="Reportes"  actionListener="#{facturaMB.irPaginaReporte()}"  ></pf:commandButton>
                 </pf:panel>
             </center>
         </h:form>   
 
         <pf:dialog header="FACTURA GUARDADA" 
-                  id="dialogFacturaGuardada"
-                  widgetVar="dialogFacturaGuardada" 
-                  minHeight="40"
-                  draggable="false"
-                  modal="true"
-                  resizable="false"
-                  maximizable="false">
+                   id="dialogFacturaGuardada"
+                   widgetVar="dialogFacturaGuardada" 
+                   minHeight="40"
+                   draggable="false"
+                   modal="true"
+                   resizable="false"
+                   maximizable="false">
 
             <pf:outputLabel value="Factura correctamente guardada" />
             <pf:commandButton value="Salir" onclick="PF('dialogFacturaGuardada').hide();" 
-                             styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                              styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
         </pf:dialog>    
 
         <pf:dialog header="ERROR AL GUARDAR FACTURA" 
-                  id="dialogErrorFacturaGuardada"
-                  widgetVar="dialogErrorFacturaGuardada" 
-                  minHeight="40"
-                  draggable="false"
-                  modal="true"
-                  resizable="false"
-                  maximizable="false">
+                   id="dialogErrorFacturaGuardada"
+                   widgetVar="dialogErrorFacturaGuardada" 
+                   minHeight="40"
+                   draggable="false"
+                   modal="true"
+                   resizable="false"
+                   maximizable="false">
 
             <pf:outputLabel value="Error al momento de guardar la Factura" />
             <pf:commandButton value="Salir" onclick="PF('dialogErrorFacturaGuardada').hide();" 
-                             styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                              styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </pf:dialog>    
+
+        <pf:dialog header="DATOS OBLIGATORIOS" 
+                   id="dialogErrorDatosObligatorios"
+                   widgetVar="dialogErrorDatosObligatorios" 
+                   minHeight="40"
+                   draggable="false"
+                   modal="true"
+                   resizable="false"
+                   maximizable="false">
+
+            <pf:outputLabel value="Faltan datos para guardar la factura" />
+            <pf:commandButton value="Salir" onclick="PF('dialogErrorDatosObligatorios').hide();" 
+                              styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
         </pf:dialog>    
 
     </h:body>

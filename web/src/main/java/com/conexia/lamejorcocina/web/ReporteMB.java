@@ -51,17 +51,22 @@ public class ReporteMB {
     public void llenarVoReporteTotalFacturado(List<Object> obj) {
         Iterator itr = obj.iterator();
         while (itr.hasNext()) {
+            Boolean noInsertar = false;
             Object[] objitr = (Object[]) itr.next();
             reporteTotalFacturadoVO reporteVo = new reporteTotalFacturadoVO();
-            reporteVo.setNombre(objitr[10].toString());
+            reporteVo.setNombre(objitr[11].toString());
             reporteVo.setApellido(objitr[12].toString() + " " + objitr[13].toString());
             if (Objects.nonNull(objitr[4])) {
                 reporteVo.setMes(objitr[4].toString());
             }
             if (Objects.nonNull(objitr[14])) {
                 reporteVo.setSuma(objitr[14].toString());
+            }else{
+                noInsertar = true;
             }
-            listReporte.add(reporteVo);
+            if(!noInsertar){
+                listReporte.add(reporteVo);
+            }
         }
     }
 
@@ -72,9 +77,9 @@ public class ReporteMB {
             Object[] objitr = (Object[]) itr.next();
             reporteTotalFacturadoVO reporteVo = new reporteTotalFacturadoVO();
             reporteVo.setNombre(objitr[0].toString());
-            reporteVo.setApellido(objitr[1].toString() + " " + objitr[1].toString());
-            if (Objects.nonNull(objitr[2])) {
-                reporteVo.setMes(objitr[2].toString());
+            reporteVo.setApellido(objitr[1].toString() + " " + objitr[2].toString());
+            if (Objects.nonNull(objitr[4])) {
+                reporteVo.setMes(objitr[4].toString());
             }
             if (Objects.nonNull(objitr[3])) {
                 reporteVo.setSuma(objitr[3].toString());

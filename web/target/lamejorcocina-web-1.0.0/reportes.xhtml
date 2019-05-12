@@ -15,7 +15,9 @@
                     <pf:commandButton id="ReporteTotalFacturado" value="Reporte total facturado"  action="#{reporteMB.reporteTotalFacturado()}" update="panelReporte" />
                     <pf:commandButton id="ReportesGastoSuperiores" value="Reporte gastos superiores"  action="#{reporteMB.reporteGastoSuperior()}" update="panelReporte" />
 
-                    <pf:panel id="panelReporte" >
+                    <pf:spacer height="50px" />
+                    
+                    <pf:panel id="panelReporte" header="REPORTE" >
                         <pf:panelGrid>
                             <pf:dataTable var="reporte" value="#{reporteMB.listReporte}"
                                          rows="5"
@@ -26,7 +28,7 @@
                                 <pf:column headerText="Nombre">
                                     <h:outputText value="#{reporte.nombre}" />
                                 </pf:column>
-                                <pf:column headerText="Apellido">
+                                <pf:column headerText="Apellidos">
                                     <h:outputText value="#{reporte.apellido}" />
                                 </pf:column>
                                 <pf:column headerText="Mes">

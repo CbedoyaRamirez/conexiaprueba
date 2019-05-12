@@ -18,6 +18,7 @@
     <name>lamejorcocina-assembly</name>
   
     <build>
+        <finalName>lamejorcocina</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
