@@ -94,19 +94,24 @@ insert into cocinero values (12345, 'Luisa', 'Tyson', 'Mosquera');
 ----------------------------- EJECUCION DE LA APLICACION ----------------------------
 -------------------------------------------------------------------------------------
 
+-------------------------------------------------------------------------------------
+---- DESCARGAR FUENTE GIT -----------------------------------------------------------
+-------------------------------------------------------------------------------------
+
 SE DEBE DESCARGAR LOS FUENTES DE GIT
 
 RUTA : https://github.com/CbedoyaRamirez/conexiaprueba.git
 
-UNA VEZ DESCARGADOS EJECUTARLO EN NETBEANS (IDE DONDE FUE DESARROLLADO LA APLICACION)
+--------------------------------------------------------------------------------------
+------ CAMBIO DE NOMBRE URL ----------------------------------------------------------
+--------------------------------------------------------------------------------------
 
-AL MOMENTO DE DESPLEGAR LA APLICACION RENOMBRAR EL .EAR 
+Al momento de ejecutar la aplicacion, se abrira con la siguiente URL
 
-lamejorCocina\assembly\target
+http://localhost:8080/lamejorcocina-web-1.0.0
 
-*lamejorcocina-assembly-1.0.0.ear POR lamejorcocina.ear
+Cambiarla por :
 
-
-
+http://localhost:8080/lamejorcocina/
 
 
